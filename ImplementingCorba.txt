@@ -195,3 +195,18 @@ module FileTransfer {
         boolean cpath(inout wstring path);
     };
 };
+
+AccessDenied will be translated into the Java class AccessDenied belonging to the package 
+FileTransfer.
+
+The structure FInfo will be translated to the class with the same name beonging to the
+FileTransfer package.
+
+The interface FileInterface includes the declarations of methods available to clients. 
+The compiler produces a Java interface out of it, which the server class must then
+implement. 
+
+The method fstat() returns information about the file encapsulated in a FInfo object.
+
+The method cpath() passes the relative pathname of the file to the server, which converts 
+it to the canonical name (with the components ".." and "." removed). 
