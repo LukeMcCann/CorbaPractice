@@ -42,4 +42,73 @@ interface of which the server implements.
 
 
 
+IDL:
+
+    Components:
+
+        The highest level of structure in the heirarchy is module (maps to java package).
+
+            module Example {
+                // interfaces and data types here
+            };
+
+        Modules are designed for grouping interfaces within a single namespace. 
+
+        An interface is introduced with the keyword "interface" (maps to java interface):
+
+            module Example {
+                interface Operations {
+                    // declaration of methods and attributes
+                };
+            }; // remember semi-colons!
+
+
+    Data-Types:
+
+        Basic IDL data types are similar to those of regular programing languages. 
+
+        Primitive Types:
+
+                IDL                       Java            Desc
+         short, unsigned short           short          16 bit int
+         long, unsigned long             int            32 bit int 
+         long long, unsigned long long   long           64 bit int 
+         float                           float          32 bit float 
+         double                          double         64 bit float 
+         char, wchar                     char           8 or 16 bit char 
+         boolean                         boolean        boolean value  
+         octet                           byte           non-interpreted character
+
+        besides these there also exists the special type "any" which represents
+        any primitive or compound type. Octet is not subject to any conversions
+        when transferred betwee systems.
+
+    
+    Array Types:
+
+        These types are used to represent data of varable size
+        the keyword sequence<type> declares a vector of elements of the type type with
+        unspecified length.
+
+        sequence<string> message;
+        sequence<char, 80> line; 
+
+        (maps to Java array)
+
+    compound types:
+
+        Compound types comprise of primitive or compound types. It is invoked with the
+        keyword typedef or struct. 
+
+        typedef sring name;
+        typedef sequence<string> names;
+
+        structures:
+            the keyword struct defines a structure used for grouping attributes:
+
+                struct Person {
+                    string name;
+                    int age;
+                };
+
 
