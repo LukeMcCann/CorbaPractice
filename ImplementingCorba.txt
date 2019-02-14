@@ -1,0 +1,45 @@
+Creating a distributed application conforming to the CORBA standard usually consists
+of the following steps:
+
+1. Define the IDL specification
+2. Compile the IDL specification to the implementation language
+3. Implement the server based on the generated source code
+4. Implement the client,
+5. Run the ORB daemon, the server and client
+
+
+The Server:
+
+Preparing the server involves implementing the methods specified in the IDL.
+IDL generate stub and skeleton code which consists of only declarations of what
+will be implemented in the project, the implementation is done in the implementation
+language. It is also neccessary to add the code for initializing the CORBA system and
+to install the service. Uusally these actions are delegared to the main() method of some
+additional class. If we use a POA adapter then it may follow as such:
+
+1. Create and initialize the ORB,
+2. Get a reference to the root POA and activate the POAManager
+3. Create a server object and store a reference to it,
+4. Retrieve a reference to the naming service,
+5. Register the server under some name,
+6. Wait for clients. 
+
+
+The Client:
+
+A client application must obtain a reference to that of the server object.
+Similar to RMI (Remote Method Invocation) the server object is represented locally
+by a stub. A reference to the server is retrieved via the naming service, hence
+we must first access this service as in the server side. 
+
+1. Create and initialize the ORB
+2. Get a reference to the naming service
+3. Get a reference to the server object by means of its name
+4. Call server object methods. 
+
+A client may invoke any methods of the server object which were declared within the IDL
+interface of which the server implements. 
+
+
+
+
