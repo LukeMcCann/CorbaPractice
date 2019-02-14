@@ -112,3 +112,45 @@ IDL:
                 };
 
 
+    Exceptions:
+        An exception may be declared on a module level or on an interface level 
+        using the keyword exception:
+
+            exception Error {};
+
+            (maps to Java exception i.e. to its class)
+
+
+    Operations:
+
+        IDL operations map to Java methods, the syntact is similar to that of java:
+
+            type name(parameterList);
+            type name(parameterList) raises(Exceptionname);
+
+
+Example: File Transfer 
+
+    Demonstrating the CORBA technology on the example of the program for downloading files
+    from the remote server. 
+
+Application Structure:
+
+    The server is an object of the class FileServant, this provides services defined 
+    in the interface file FileTransferFace.idl. The services include: 
+    
+        1. list directory contents
+        2. download a file 
+        3. retrieving file information 
+        4. the main() method -> where the CORBA environment is initialised
+
+    It initialises the CORBA environment and gets data from the server. At the end
+    it creates an object of the class FileTransferGUI which is responsible to user
+    interaction. 
+
+    the ORB daemon uses a well-known port number 900 for network communicaiton,
+    as this is a reserved port and requires admin permissions for installing the 
+    service. Here the unrestricted port number of 2004 is used. It requires additional
+    options of supplements in the source code. 
+    
+     
